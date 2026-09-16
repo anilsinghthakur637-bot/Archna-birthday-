@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Happy Birthday Archna 🎂</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;font-family:system-ui,-apple-system,sans-serif;background:radial-gradient(circle at top,#fff 0,#ffeaf5 42%,#eadcff 100%);color:#38283d}
+.card{width:min(92%,440px);padding:42px 26px;text-align:center;background:rgba(255,255,255,.88);border:1px solid rgba(255,255,255,.9);border-radius:32px;box-shadow:0 25px 80px rgba(80,40,90,.2);position:relative;z-index:2}
+h1{font-size:35px;margin:12px 0 10px}
+p{font-size:17px;line-height:1.6;margin:8px 0}
+.gift{font-size:75px;cursor:pointer;filter:drop-shadow(0 8px 10px rgba(0,0,0,.12));animation:float 2s ease-in-out infinite}
+button{border:0;border-radius:999px;padding:15px 26px;margin-top:18px;background:#74427f;color:#fff;font-size:16px;font-weight:700;box-shadow:0 8px 22px rgba(116,66,127,.3)}
+.hidden{display:none}
+.heart{position:fixed;font-size:24px;top:-40px;z-index:1;animation:fall 4s linear forwards}
+@keyframes float{50%{transform:translateY(-9px) rotate(-2deg)}}
+@keyframes fall{to{transform:translateY(115vh) rotate(360deg);opacity:.2}}
+</style>
+</head>
+<body>
+<div class="card">
+  <div id="intro">
+    <div class="gift" onclick="reveal()">🎁</div>
+    <h1>Something special for you…</h1>
+    <p>Archna, there's a little surprise waiting inside. ✨</p>
+    <button onclick="reveal()">Tap to open 🎀</button>
+  </div>
+  <div id="final" class="hidden">
+    <div class="gift">🎂</div>
+    <h1>Happy Birthday, Archna! 🥳</h1>
+    <p>May your day be filled with happiness, laughter and beautiful moments.</p>
+    <p>Keep smiling, keep shining! 💜✨</p>
+    <div style="font-size:40px;margin-top:18px">🎈🎉💐✨</div>
+  </div>
+</div>
+<script>
+function reveal(){
+ document.getElementById('intro').classList.add('hidden');
+ document.getElementById('final').classList.remove('hidden');
+ for(let i=0;i<55;i++){
+  const e=document.createElement('div');
+  e.className='heart';
+  e.textContent=['💜','✨','🎈','🌸','🎉'][Math.floor(Math.random()*5)];
+  e.style.left=Math.random()*100+'vw';
+  e.style.animationDuration=(2.5+Math.random()*3)+'s';
+  e.style.animationDelay=Math.random()*.7+'s';
+  document.body.appendChild(e);
+  setTimeout(()=>e.remove(),6000);
+ }
+}
+</script>
+</body>
+</html>
