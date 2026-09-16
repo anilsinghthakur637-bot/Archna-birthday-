@@ -1,54 +1,111 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Happy Birthday Archna 🎂</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>For Archna 🎀</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;font-family:system-ui,-apple-system,sans-serif;background:radial-gradient(circle at top,#fff 0,#ffeaf5 42%,#eadcff 100%);color:#38283d}
-.card{width:min(92%,440px);padding:42px 26px;text-align:center;background:rgba(255,255,255,.88);border:1px solid rgba(255,255,255,.9);border-radius:32px;box-shadow:0 25px 80px rgba(80,40,90,.2);position:relative;z-index:2}
-h1{font-size:35px;margin:12px 0 10px}
-p{font-size:17px;line-height:1.6;margin:8px 0}
-.gift{font-size:75px;cursor:pointer;filter:drop-shadow(0 8px 10px rgba(0,0,0,.12));animation:float 2s ease-in-out infinite}
-button{border:0;border-radius:999px;padding:15px 26px;margin-top:18px;background:#74427f;color:#fff;font-size:16px;font-weight:700;box-shadow:0 8px 22px rgba(116,66,127,.3)}
+body{margin:0;min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at top,#5d3a86,#21142f 65%);color:#fff;display:flex;justify-content:center;align-items:center;overflow:hidden}
+.wrap{width:min(92%,430px);text-align:center;position:relative;z-index:2}
+.card{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(14px);border-radius:28px;padding:32px 24px;box-shadow:0 20px 60px rgba(0,0,0,.3);animation:pop .7s ease}
+h1{font-size:34px;margin:8px 0 12px}
+h2{font-size:27px;margin:10px 0}
+p{font-size:17px;line-height:1.6;color:#f4eefa}
+button{border:0;border-radius:999px;padding:14px 24px;font-size:16px;font-weight:700;background:#fff;color:#3b2352;cursor:pointer;margin-top:16px;box-shadow:0 8px 25px rgba(0,0,0,.22)}
+button:active{transform:scale(.96)}
 .hidden{display:none}
-.heart{position:fixed;font-size:24px;top:-40px;z-index:1;animation:fall 4s linear forwards}
-@keyframes float{50%{transform:translateY(-9px) rotate(-2deg)}}
-@keyframes fall{to{transform:translateY(115vh) rotate(360deg);opacity:.2}}
+.gift{font-size:82px;animation:bob 1.8s infinite}
+.small{font-size:14px;opacity:.8}
+.heart{font-size:40px;animation:pulse 1.2s infinite}
+.cardbox{background:rgba(255,255,255,.09);border-radius:20px;padding:18px;margin:12px 0;text-align:left}
+.cardbox b{display:block;margin-bottom:5px}
+#confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+.conf{position:absolute;top:-20px;font-size:22px;animation:fall 3.2s linear forwards}
+.star{position:fixed;color:#fff;opacity:.65;animation:twinkle 2s infinite}
+@keyframes pop{from{transform:scale(.85);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes bob{50%{transform:translateY(-10px) rotate(3deg)}}
+@keyframes pulse{50%{transform:scale(1.18)}}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg);opacity:0}}
+@keyframes twinkle{50%{opacity:.15;transform:scale(.6)}}
 </style>
 </head>
 <body>
-<div class="card">
-  <div id="intro">
-    <div class="gift" onclick="reveal()">🎁</div>
-    <h1>Something special for you…</h1>
-    <p>Archna, there's a little surprise waiting inside. ✨</p>
-    <button onclick="reveal()">Tap to open 🎀</button>
-  </div>
-  <div id="final" class="hidden">
-    <div class="gift">🎂</div>
-    <h1>Happy Birthday, Archna! 🥳</h1>
-    <p>May your day be filled with happiness, laughter and beautiful moments.</p>
-    <p>Keep smiling, keep shining! 💜✨</p>
-    <div style="font-size:40px;margin-top:18px">🎈🎉💐✨</div>
-  </div>
+
+<div id="stars"></div>
+<div id="confetti"></div>
+
+<div class="wrap">
+
+<div class="card" id="s1">
+<div class="small">A tiny surprise for you…</div>
+<div class="gift">🎁</div>
+<h2>Hey Archna 👀</h2>
+<p>There’s something waiting inside.<br>But you have to unlock it yourself. ✨</p>
+<button onclick="next(2)">Tap to unlock 🎀</button>
 </div>
+
+<div class="card hidden" id="s2">
+<div class="heart">💜</div>
+<h2>Okay… you found it!</h2>
+<p>But that was only the first little surprise. 😌</p>
+<button onclick="next(3)">Show me 👀</button>
+</div>
+
+<div class="card hidden" id="s3">
+<h2>Three things for you ✨</h2>
+<div class="cardbox">🌷 <b>A wish</b>May this year bring you lots of happy moments and reasons to smile.</div>
+<div class="cardbox">🌟 <b>A reminder</b>You deserve to enjoy the little moments too—today especially.</div>
+<div class="cardbox">🎀 <b>And one final thing…</b>There’s still one more screen waiting.</div>
+<button onclick="next(4)">One more 👀</button>
+</div>
+
+<div class="card hidden" id="s4">
+<div style="font-size:65px">🎉</div>
+<h1>Happy Birthday,<br>Archna! 🥳</h1>
+<p>May your day be filled with happiness, laughter and beautiful moments.</p>
+<p><b>Keep smiling, keep shining! 💜✨</b></p>
+<button onclick="celebrate()">Make a wish ✨</button>
+<p class="small" id="wish"></p>
+</div>
+
+</div>
+
 <script>
-function reveal(){
- document.getElementById('intro').classList.add('hidden');
- document.getElementById('final').classList.remove('hidden');
- for(let i=0;i<55;i++){
-  const e=document.createElement('div');
-  e.className='heart';
-  e.textContent=['💜','✨','🎈','🌸','🎉'][Math.floor(Math.random()*5)];
-  e.style.left=Math.random()*100+'vw';
-  e.style.animationDuration=(2.5+Math.random()*3)+'s';
-  e.style.animationDelay=Math.random()*.7+'s';
-  document.body.appendChild(e);
-  setTimeout(()=>e.remove(),6000);
- }
+function next(n){
+document.querySelectorAll('.card').forEach(x=>x.classList.add('hidden'));
+document.getElementById('s'+n).classList.remove('hidden');
+if(n===4) celebrate();
+}
+
+function celebrate(){
+const box=document.getElementById('confetti');
+const icons=['🎉','✨','💜','🎀','⭐','💫','🎈'];
+
+for(let i=0;i<45;i++){
+const e=document.createElement('div');
+e.className='conf';
+e.textContent=icons[Math.floor(Math.random()*icons.length)];
+e.style.left=Math.random()*100+'vw';
+e.style.animationDelay=Math.random()*1.2+'s';
+box.appendChild(e);
+setTimeout(()=>e.remove(),4500);
+}
+
+document.getElementById('wish').textContent='✨ Make a good wish… and don’t tell anyone. 🤫';
+}
+
+for(let i=0;i<22;i++){
+const s=document.createElement('div');
+s.className='star';
+s.textContent='✦';
+s.style.left=Math.random()*100+'vw';
+s.style.top=Math.random()*100+'vh';
+s.style.fontSize=(8+Math.random()*14)+'px';
+s.style.animationDelay=Math.random()*2+'s';
+document.getElementById('stars').appendChild(s);
 }
 </script>
+
 </body>
 </html>
